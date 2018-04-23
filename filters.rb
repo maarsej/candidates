@@ -25,19 +25,18 @@ def recent?(candidate)
   today = Date.today
   if (today - date) <= 15
     return true
-  else 
+  else
     return false
-  end 
+  end
 end
 
 def language?(candidate)
   if (candidate[:languages].include?("ruby") || candidate[:languages].include?("python"))
     return true
-  else 
+  else
     return false
   end
 end
-
 
 def qualified_candidates(candidates)
   # Your code Here
@@ -45,6 +44,7 @@ def qualified_candidates(candidates)
   candidates.each do |candidate|
     if experienced?(candidate) && candidate[:github_points] >= 100 && language?(candidate) && recent?(candidate)
       output << candidate
+    end
   end
   return output
 end
@@ -53,11 +53,9 @@ end
 def ordered_by_qualifications(candidates)
   myArray = candidates
   #first sort by github points
-  myArray.sort! { |a, b|  a[:github_points] <=> b[:github_points] }
+  myArray.sort! { |a, b| a[:github_points] <=> b[:github_points] }
   #sort by experience
-  myArray.sort! { |a, b|  a[:years_of_experience] <=> b[:years_of_experience] }
+  myArray.sort! { |a, b| a[:years_of_experience] <=> b[:years_of_experience] }
 
   return myArray
 end
-
-  
